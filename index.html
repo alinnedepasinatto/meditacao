@@ -1,773 +1,1769 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-<title>Meditações O Seu Lugar®</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-<style>
-:root{
-  --pink:#F24DB7;
-  --pink-dark:#D92A9F;
-  --pink-soft:#FFE6F5;
-  --red:#F20530;
-  --black:#120C18;
-  --text:#5E5865;
-  --white:#FFFFFF;
-  --bg:#FFF9FC;
-  --line:#F2DDE9;
-  --shadow:0 20px 60px rgba(242,77,183,.16);
-}
-
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-
-body{
-  font-family:'Inter',sans-serif;
-  background:var(--bg);
-  color:var(--black);
-}
-
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background-image:
-    linear-gradient(to right, rgba(242,77,183,.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(242,77,183,.06) 1px, transparent 1px);
-  background-size:58px 58px;
-  z-index:-2;
-}
-
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:
-    radial-gradient(circle at top left, rgba(242,77,183,.13), transparent 30%),
-    radial-gradient(circle at bottom right, rgba(242,5,48,.08), transparent 34%);
-  z-index:-1;
-}
-
-a{text-decoration:none}
-
-.container{
-  width:min(1140px,92%);
-  margin:auto;
-}
-
-section{
-  padding:64px 0;
-}
-
-h1,h2,h3,
-.logo,
-.kicker,
-.section-title small,
-.card-number,
-.step-number{
-  font-family:'Archivo Black',sans-serif;
-  letter-spacing:-1.5px;
-  line-height:.95;
-}
-
-.nav{
-  position:sticky;
-  top:0;
-  z-index:999;
-  background:rgba(255,255,255,.88);
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--line);
-}
-
-.nav-inner{
-  height:72px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-.logo{
-  font-size:25px;
-  color:var(--black);
-}
-
-.logo span{color:var(--pink)}
-
-.nav-btn{
-  background:linear-gradient(135deg,var(--red),var(--pink));
-  color:white;
-  padding:13px 22px;
-  border-radius:999px;
-  font-weight:900;
-}
-
-.hero{
-  padding:86px 0 58px;
-}
-
-.hero-inner{
-  max-width:920px;
-}
-
-.kicker{
-  display:inline-flex;
-  padding:12px 22px;
-  border-radius:999px;
-  background:var(--pink-soft);
-  color:var(--red);
-  font-size:15px;
-  text-transform:uppercase;
-  margin-bottom:28px;
-}
-
-.hero h1{
-  font-size:clamp(54px,9vw,112px);
-  color:var(--black);
-  margin-bottom:28px;
-}
-
-.hero h1 span{color:var(--pink)}
-
-.hero p{
-  max-width:760px;
-  font-size:clamp(20px,2vw,24px);
-  line-height:1.5;
-  color:var(--text);
-  margin-bottom:36px;
-}
-
-.hero-actions{
-  display:flex;
-  gap:16px;
-  flex-wrap:wrap;
-}
-
-.btn{
-  display:inline-flex;
-  justify-content:center;
-  align-items:center;
-  padding:18px 32px;
-  border-radius:999px;
-  font-weight:900;
-  font-size:16px;
-  transition:.25s;
-}
-
-.btn-primary{
-  background:linear-gradient(135deg,var(--red),var(--pink));
-  color:white;
-  box-shadow:var(--shadow);
-}
-
-.btn-secondary{
-  background:white;
-  color:var(--red);
-  border:2px solid var(--pink);
-}
-
-.btn:hover{transform:translateY(-3px)}
-
-.section-title{
-  max-width:900px;
-  margin:0 auto 36px;
-}
-
-.section-title small{
-  display:block;
-  color:var(--red);
-  font-size:17px;
-  text-transform:uppercase;
-  margin-bottom:14px;
-}
-
-.section-title h2{
-  font-size:clamp(40px,5vw,68px);
-  color:var(--black);
-  margin-bottom:16px;
-}
-
-.section-title p{
-  color:var(--text);
-  font-size:19px;
-  line-height:1.6;
-}
-
-.strip{
-  background:white;
-  border:2px solid var(--pink-soft);
-  border-radius:38px;
-  padding:52px;
-  box-shadow:var(--shadow);
-}
-
-.strip-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:38px;
-  align-items:center;
-}
-
-.strip h2{
-  color:var(--black);
-  font-size:clamp(42px,5vw,64px);
-}
-
-.strip h2 span{
-  color:var(--pink);
-}
-
-.strip p{
-  color:var(--text);
-  font-size:19px;
-  line-height:1.7;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-}
-
-.card{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:30px;
-  padding:32px;
-  transition:.25s;
-}
-
-.card:hover{
-  transform:translateY(-6px);
-  box-shadow:var(--shadow);
-}
-
-.card-number{
-  color:var(--pink);
-  font-size:20px;
-  margin-bottom:18px;
-}
-
-.card h3{
-  font-size:32px;
-  margin-bottom:16px;
-  color:var(--black);
-}
-
-.card p,
-.card li{
-  color:var(--text);
-  line-height:1.7;
-  font-size:16px;
-}
-
-.card ul{list-style:none}
-
-.card li{
-  padding:7px 0;
-}
-
-.card li::before{
-  content:"•";
-  color:var(--pink);
-  margin-right:8px;
-  font-weight:900;
-}
-
-.testimonials{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:18px;
-}
-
-.testimonial{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:28px;
-  padding:28px;
-}
-
-.testimonial strong{
-  display:block;
-  color:var(--black);
-  margin-bottom:12px;
-  font-size:18px;
-  font-weight:900;
-}
-
-.testimonial p{
-  color:var(--text);
-  line-height:1.7;
-}
-
-.steps{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
-}
-
-.step{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:28px;
-  padding:30px;
-}
-
-.step-number{
-  font-size:50px;
-  color:var(--pink);
-  margin-bottom:12px;
-}
-
-.step h3{
-  font-size:26px;
-  margin-bottom:10px;
-}
-
-.step p{
-  color:var(--text);
-  line-height:1.7;
-}
-
-.offer{
-  background:
-    radial-gradient(circle at top left, rgba(255,255,255,.25), transparent 30%),
-    linear-gradient(135deg,var(--pink),var(--pink-dark));
-  border-radius:42px;
-  padding:68px 42px;
-  text-align:center;
-  color:white;
-  box-shadow:0 30px 90px rgba(242,77,183,.28);
-}
-
-.offer small{
-  display:block;
-  font-family:'Archivo Black',sans-serif;
-  color:white;
-  font-size:17px;
-  text-transform:uppercase;
-  margin-bottom:18px;
-}
-
-.offer h2{
-  color:white;
-  font-size:clamp(42px,6vw,70px);
-  margin-bottom:18px;
-}
-
-.offer p{
-  max-width:720px;
-  margin:auto;
-  color:rgba(255,255,255,.92);
-  font-size:18px;
-  line-height:1.7;
-}
-
-.price{
-  font-family:'Archivo Black',sans-serif;
-  font-size:clamp(64px,8vw,96px);
-  margin:24px 0 10px;
-  color:white;
-}
-
-.offer .btn-primary{
-  background:white;
-  color:var(--pink-dark);
-  box-shadow:0 18px 50px rgba(0,0,0,.12);
-}
-
-.faq{
-  max-width:900px;
-  margin:auto;
-  display:grid;
-  gap:16px;
-}
-
-.faq-item{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:24px;
-  padding:26px;
-}
-
-.faq-item h3{
-  font-size:27px;
-  margin-bottom:10px;
-}
-
-.faq-item p{
-  color:var(--text);
-  line-height:1.7;
-}
-
-.final{
-  text-align:center;
-}
-
-.final h2{
-  max-width:980px;
-  margin:0 auto 20px;
-  font-size:clamp(42px,6vw,72px);
-}
-
-.final h2 span{color:var(--pink)}
-
-.final p{
-  max-width:760px;
-  margin:0 auto 34px;
-  color:var(--text);
-  font-size:20px;
-  line-height:1.7;
-}
-
-footer{
-  border-top:1px solid var(--line);
-  padding:32px 20px;
-  text-align:center;
-  color:var(--text);
-}
-
-@media(max-width:980px){
-  .grid,.steps,.testimonials,.strip-grid{
-    grid-template-columns:1fr;
-  }
-}
-
-@media(max-width:640px){
-  section{padding:52px 0}
-
-  .hero{
-    padding:62px 0 40px;
-  }
-
-  .hero h1{
-    font-size:54px;
-    letter-spacing:-2.5px;
-  }
-
-  .hero p{
-    font-size:18px;
-  }
-
-  .btn{
-    width:100%;
-  }
-
-  .strip,
-  .offer{
-    padding:34px 24px;
-  }
-
-  .nav-inner{
-    height:auto;
-    padding:14px 0;
-    gap:12px;
-    flex-direction:column;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Meditações O Seu Lugar® | Volte para você</title>
+
+  <meta
+    name="description"
+    content="Mais de 50 meditações guiadas para desacelerar a mente, aliviar a ansiedade, dormir melhor e voltar para si."
+  >
+
+  <meta property="og:title" content="Meditações O Seu Lugar®">
+  <meta
+    property="og:description"
+    content="Um espaço seguro para desacelerar a mente, aliviar a ansiedade, dormir melhor e voltar para si."
+  >
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Meditações O Seu Lugar®">
+  <meta
+    name="twitter:description"
+    content="Meditações guiadas criadas especialmente para mulheres."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --pink: #f24db7;
+      --pink-dark: #d92a9f;
+      --pink-deep: #b91d86;
+      --pink-soft: #ffe6f5;
+      --pink-pale: #fff4fb;
+
+      --red: #f20530;
+      --red-dark: #c90029;
+
+      --black: #120c18;
+      --black-soft: #251a2b;
+      --text: #5e5865;
+      --text-light: #817a86;
+
+      --white: #ffffff;
+      --bg: #fff9fc;
+      --line: #f2dde9;
+
+      --shadow-sm: 0 12px 34px rgba(71, 28, 59, 0.08);
+      --shadow-md: 0 20px 60px rgba(242, 77, 183, 0.16);
+      --shadow-lg: 0 30px 90px rgba(242, 77, 183, 0.24);
+
+      --radius-sm: 18px;
+      --radius-md: 28px;
+      --radius-lg: 42px;
+
+      --container: 1140px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: var(--bg);
+      color: var(--black);
+      font-family: "Inter", sans-serif;
+      line-height: 1.65;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      background-image:
+        linear-gradient(
+          to right,
+          rgba(242, 77, 183, 0.055) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          to bottom,
+          rgba(242, 77, 183, 0.055) 1px,
+          transparent 1px
+        );
+      background-size: 58px 58px;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(
+          circle at 8% 8%,
+          rgba(242, 77, 183, 0.14),
+          transparent 28%
+        ),
+        radial-gradient(
+          circle at 94% 88%,
+          rgba(242, 5, 48, 0.08),
+          transparent 32%
+        );
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(var(--container), 92%);
+      margin-inline: auto;
+    }
+
+    section {
+      padding: 64px 0;
+    }
+
+    h1,
+    h2,
+    h3,
+    .logo,
+    .eyebrow,
+    .kicker,
+    .number,
+    .price,
+    .old-price-label {
+      font-family: "Archivo Black", sans-serif;
+      line-height: 0.98;
+      letter-spacing: -1.5px;
+    }
+
+    p {
+      color: var(--text);
+    }
+
+    .eyebrow {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--red);
+      font-size: 17px;
+      text-transform: uppercase;
+    }
+
+    .section-heading {
+      max-width: 900px;
+      margin-bottom: 36px;
+    }
+
+    .section-heading.center {
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 16px;
+      color: var(--black);
+      font-size: clamp(40px, 5vw, 68px);
+    }
+
+    .section-heading h2 span,
+    .accent {
+      color: var(--pink);
+    }
+
+    .section-heading p {
+      max-width: 780px;
+      font-size: 19px;
+      line-height: 1.65;
+    }
+
+    .section-heading.center p {
+      margin-inline: auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 58px;
+      padding: 17px 32px;
+      border: 0;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 900;
+      font-size: 15px;
+      text-align: center;
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn:focus-visible,
+    .faq-question:focus-visible,
+    .nav-link:focus-visible {
+      outline: 4px solid rgba(242, 77, 183, 0.24);
+      outline-offset: 4px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--red), var(--pink));
+      color: var(--white);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-primary:hover {
+      box-shadow: var(--shadow-lg);
+      filter: saturate(1.08);
+    }
+
+    .btn-secondary {
+      border: 2px solid var(--pink);
+      background: var(--white);
+      color: var(--red);
+    }
+
+    .btn-white {
+      background: var(--white);
+      color: var(--pink-dark);
+      box-shadow: 0 18px 50px rgba(74, 19, 61, 0.15);
+    }
+
+    /* NAVEGAÇÃO */
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      color: var(--black);
+      font-size: 24px;
+    }
+
+    .logo span {
+      color: var(--pink);
+    }
+
+    .nav-link {
+      padding: 12px 20px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--red), var(--pink));
+      color: var(--white);
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 86px 0 58px;
+    }
+
+    .hero-inner {
+      max-width: 960px;
+    }
+
+    .kicker {
+      display: inline-flex;
+      padding: 12px 22px;
+      margin-bottom: 28px;
+      border-radius: 999px;
+      background: var(--pink-soft);
+      color: var(--red);
+      font-size: 15px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 960px;
+      margin-bottom: 26px;
+      color: var(--black);
+      font-size: clamp(52px, 8vw, 108px);
+    }
+
+    .hero h1 span {
+      color: var(--pink);
+    }
+
+    .hero-description {
+      max-width: 800px;
+      margin-bottom: 34px;
+      font-size: clamp(19px, 2vw, 24px);
+      line-height: 1.5;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .hero-trust {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .trust-pill {
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--black-soft);
+      font-weight: 800;
+      font-size: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .trust-pill::before {
+      content: "✓";
+      margin-right: 8px;
+      color: var(--pink);
+      font-weight: 900;
+    }
+
+    /* VÍDEO */
+
+    .video-section {
+      padding-top: 40px;
+    }
+
+    .video-layout {
+      display: grid;
+      grid-template-columns: 0.72fr 1.28fr;
+      gap: 34px;
+      align-items: center;
+      padding: 38px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      box-shadow: var(--shadow-md);
+    }
+
+    .video-frame {
+      width: min(100%, 380px);
+      margin-inline: auto;
+      overflow: hidden;
+      border: 10px solid var(--black);
+      border-radius: 34px;
+      background: var(--black);
+      box-shadow: 0 24px 60px rgba(18, 12, 24, 0.22);
+      aspect-ratio: 9 / 16;
+    }
+
+    .video-frame iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .video-copy .eyebrow {
+      margin-bottom: 12px;
+    }
+
+    .video-copy h2 {
+      margin-bottom: 22px;
+      color: var(--black);
+      font-size: clamp(38px, 5vw, 64px);
+    }
+
+    .video-copy p {
+      margin-bottom: 14px;
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    .video-copy strong {
+      color: var(--black);
+    }
+
+    /* DOR */
+
+    .pain-card {
+      overflow: hidden;
+      border: 2px solid var(--pink-soft);
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      box-shadow: var(--shadow-md);
+    }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+    }
+
+    .pain-heading {
+      display: flex;
+      align-items: center;
+      padding: 48px;
+      background: var(--pink-soft);
+    }
+
+    .pain-heading h2 {
+      color: var(--black);
+      font-size: clamp(40px, 5vw, 66px);
+    }
+
+    .pain-heading span {
+      color: var(--pink);
+    }
+
+    .pain-content {
+      padding: 48px;
+    }
+
+    .pain-list {
+      display: grid;
+      gap: 11px;
+      list-style: none;
+    }
+
+    .pain-list li {
+      position: relative;
+      padding-left: 24px;
+      color: var(--text);
+      font-size: 17px;
+    }
+
+    .pain-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      top: -1px;
+      color: var(--pink);
+      font-size: 24px;
+      font-weight: 900;
+    }
+
+    .pain-message {
+      margin-top: 24px;
+      color: var(--black);
+      font-weight: 900;
+      font-size: 19px;
+    }
+
+    /* SOLUÇÃO */
+
+    .solution {
+      padding: 58px 0;
+      background: var(--pink-pale);
+    }
+
+    .solution-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .solution-panel h2 {
+      color: var(--black);
+      font-size: clamp(40px, 5vw, 66px);
+    }
+
+    .solution-panel h2 span {
+      color: var(--pink);
+    }
+
+    .solution-list {
+      display: grid;
+      gap: 12px;
+      list-style: none;
+    }
+
+    .solution-list li {
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      background: var(--white);
+      color: var(--black-soft);
+      font-weight: 800;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .solution-list li::before {
+      content: "✓";
+      margin-right: 10px;
+      color: var(--pink);
+    }
+
+    /* BENEFÍCIOS E MÓDULOS */
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      padding: 32px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--white);
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-number {
+      margin-bottom: 18px;
+      color: var(--pink);
+      font-family: "Archivo Black", sans-serif;
+      font-size: 20px;
+    }
+
+    .card h3 {
+      margin-bottom: 14px;
+      color: var(--black);
+      font-size: 31px;
+    }
+
+    .card p,
+    .card li {
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .card ul {
+      list-style: none;
+    }
+
+    .card li {
+      padding: 6px 0;
+    }
+
+    .card li::before {
+      content: "•";
+      margin-right: 8px;
+      color: var(--pink);
+      font-weight: 900;
+    }
+
+    .module-section {
+      background: var(--pink-pale);
+    }
+
+    /* DIFERENCIAL */
+
+    .difference {
+      padding: 50px;
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(
+          circle at top right,
+          rgba(242, 77, 183, 0.18),
+          transparent 28%
+        ),
+        var(--white);
+      border: 2px solid var(--pink-soft);
+      box-shadow: var(--shadow-md);
+    }
+
+    .difference h2 {
+      max-width: 900px;
+      margin-bottom: 22px;
+      color: var(--black);
+      font-size: clamp(40px, 5vw, 66px);
+    }
+
+    .difference h2 span {
+      color: var(--pink);
+    }
+
+    .difference p {
+      max-width: 920px;
+      font-size: 19px;
+      line-height: 1.75;
+    }
+
+    /* DEPOIMENTOS */
+
+    .testimonial-section {
+      background: var(--pink-pale);
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .testimonial {
+      position: relative;
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .testimonial::before {
+      content: "“";
+      position: absolute;
+      top: 18px;
+      right: 24px;
+      color: var(--pink-soft);
+      font-family: Georgia, serif;
+      font-size: 74px;
+      line-height: 1;
+    }
+
+    .testimonial strong {
+      display: block;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 12px;
+      color: var(--black);
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .testimonial p {
+      position: relative;
+      z-index: 1;
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    /* COMO FUNCIONA */
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .step {
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .step-number {
+      margin-bottom: 12px;
+      color: var(--pink);
+      font-family: "Archivo Black", sans-serif;
+      font-size: 50px;
+    }
+
+    .step h3 {
+      margin-bottom: 10px;
+      color: var(--black);
+      font-size: 26px;
+    }
+
+    .step p {
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* OFERTA */
+
+    .offer {
+      position: relative;
+      overflow: hidden;
+      padding: 68px 42px;
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(
+          circle at top left,
+          rgba(255, 255, 255, 0.24),
+          transparent 28%
+        ),
+        linear-gradient(135deg, var(--pink), var(--pink-dark));
+      color: var(--white);
+      text-align: center;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .offer::after {
+      content: "";
+      position: absolute;
+      right: -140px;
+      bottom: -200px;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .offer-content {
+      position: relative;
+      z-index: 1;
+      max-width: 820px;
+      margin-inline: auto;
+    }
+
+    .offer .eyebrow {
+      color: var(--white);
+      font-size: 17px;
+    }
+
+    .offer h2 {
+      margin-bottom: 18px;
+      color: var(--white);
+      font-size: clamp(42px, 6vw, 70px);
+    }
+
+    .offer-intro {
+      max-width: 720px;
+      margin: 0 auto 28px;
+      color: rgba(255, 255, 255, 0.94);
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .offer-benefits {
+      max-width: 620px;
+      margin: 0 auto 30px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      text-align: left;
+    }
+
+    .offer-benefits li {
+      list-style: none;
+      padding: 13px 15px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .offer-benefits li::before {
+      content: "✓";
+      margin-right: 8px;
+      font-weight: 900;
+    }
+
+    .old-price {
+      margin-bottom: 2px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 19px;
+    }
+
+    .old-price del {
+      text-decoration-thickness: 2px;
+    }
+
+    .price {
+      margin: 12px 0 6px;
+      color: var(--white);
+      font-size: clamp(64px, 8vw, 96px);
+    }
+
+    .installments {
+      margin-bottom: 28px;
+      color: var(--white);
+      font-size: 19px;
+      font-weight: 800;
+    }
+
+    .offer-note {
+      max-width: 650px;
+      margin: 0 auto 28px;
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    /* FAQ */
+
+    .faq {
+      max-width: 900px;
+      margin-inline: auto;
+      display: grid;
+      gap: 14px;
+    }
+
+    .faq-item {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--white);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 23px 25px;
+      border: 0;
+      background: transparent;
+      color: var(--black);
+      cursor: pointer;
+      text-align: left;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 21px;
+      line-height: 1.2;
+    }
+
+    .faq-icon {
+      flex: 0 0 auto;
+      color: var(--pink);
+      font-size: 26px;
+      transition: transform 0.25s ease;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.28s ease;
+    }
+
+    .faq-answer-inner {
+      padding: 0 25px 23px;
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    /* FINAL */
+
+    .final {
+      padding-bottom: 82px;
+      text-align: center;
+    }
+
+    .final h2 {
+      max-width: 980px;
+      margin: 0 auto 24px;
+      color: var(--black);
+      font-size: clamp(42px, 6vw, 72px);
+    }
+
+    .final h2 span {
+      color: var(--pink);
+    }
+
+    .final-lines {
+      max-width: 760px;
+      margin: 0 auto 28px;
+      display: grid;
+      gap: 7px;
+    }
+
+    .final-lines p {
+      font-size: 19px;
+    }
+
+    .final-strong {
+      max-width: 780px;
+      margin: 0 auto 30px;
+      color: var(--black);
+      font-weight: 800;
+      font-size: 20px;
+      line-height: 1.65;
+    }
+
+    footer {
+      padding: 30px 20px;
+      border-top: 1px solid var(--line);
+      background: var(--white);
+      color: var(--text);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    /* RESPONSIVO */
+
+    @media (max-width: 980px) {
+      .video-layout,
+      .pain-grid,
+      .solution-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .grid,
+      .steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .video-copy {
+        order: -1;
+      }
+
+      .pain-heading,
+      .pain-content {
+        padding: 36px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      section {
+        padding: 52px 0;
+      }
+
+      .nav-inner {
+        min-height: auto;
+        padding: 14px 0;
+        flex-direction: column;
+      }
+
+      .hero {
+        padding: 62px 0 38px;
+      }
+
+      .hero h1 {
+        font-size: 53px;
+        letter-spacing: -2.4px;
+      }
+
+      .hero-description {
+        font-size: 18px;
+      }
+
+      .hero-actions,
+      .hero-trust {
+        flex-direction: column;
+      }
+
+      .btn,
+      .trust-pill {
+        width: 100%;
+      }
+
+      .video-layout,
+      .pain-heading,
+      .pain-content,
+      .difference,
+      .offer {
+        padding: 30px 22px;
+      }
+
+      .grid,
+      .testimonials,
+      .steps,
+      .offer-benefits {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading h2 {
+        font-size: 38px;
+      }
+
+      .card h3 {
+        font-size: 28px;
+      }
+
+      .faq-question {
+        font-size: 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<nav class="nav">
-  <div class="container nav-inner">
-    <div class="logo">O Seu <span>Lugar®</span></div>
-    <a href="https://kiwify.app/R2JTv5s" class="nav-btn">Acessar meditações</a>
-  </div>
-</nav>
+  <nav class="nav" aria-label="Navegação principal">
+    <div class="container nav-inner">
+      <a href="#inicio" class="logo" aria-label="O Seu Lugar, início da página">
+        O Seu <span>Lugar®</span>
+      </a>
 
-<header class="hero">
-  <div class="container hero-inner">
-
-    <div class="kicker">Meditações gravadas para mulheres</div>
-
-    <h1>
-      Volte <span>para você</span><br>
-      com mais calma<br>
-      e leveza.
-    </h1>
-
-    <p>
-      Um espaço seguro para respirar, desacelerar e acolher
-      suas emoções no meio da rotina.
-    </p>
-
-    <div class="hero-actions">
-      <a href="https://kiwify.app/R2JTv5s" class="btn btn-primary">Quero acessar agora</a>
-      <a href="#modulos" class="btn btn-secondary">Ver conteúdos</a>
+      <a
+        href="https://pay.kiwify.com.br/jFuzc6E"
+        class="nav-link"
+        target="_blank"
+        rel="noopener"
+      >
+        Quero começar
+      </a>
     </div>
+  </nav>
 
-  </div>
-</header>
+  <main>
 
-<section>
-  <div class="container">
-    <div class="strip">
-      <div class="strip-grid">
-        <div>
-          <h2>Você não precisa ser <span>mais forte.</span></h2>
+    <header class="hero" id="inicio">
+      <div class="container hero-inner">
+
+        <div class="kicker">
+          Meditações guiadas para mulheres
         </div>
-        <div>
+
+        <h1>
+          Você cuida de todo mundo.
+          <span>Agora chegou a hora de cuidar de você.</span>
+        </h1>
+
+        <p class="hero-description">
+          Um espaço seguro para desacelerar a mente, aliviar a ansiedade,
+          dormir melhor e voltar para si através de meditações guiadas
+          criadas especialmente para mulheres.
+        </p>
+
+        <div class="hero-actions">
+          <a
+            href="https://pay.kiwify.com.br/jFuzc6E"
+            class="btn btn-primary"
+            target="_blank"
+            rel="noopener"
+          >
+            Quero começar agora
+          </a>
+
+          <a href="#plataforma" class="btn btn-secondary">
+            Conhecer a plataforma
+          </a>
+        </div>
+
+        <div class="hero-trust" aria-label="Benefícios rápidos">
+          <div class="trust-pill">Mais de 50 meditações</div>
+          <div class="trust-pill">Acesso durante 1 ano</div>
+          <div class="trust-pill">Novidades todos os meses</div>
+        </div>
+
+      </div>
+    </header>
+
+    <section class="video-section" aria-labelledby="titulo-video">
+      <div class="container">
+
+        <div class="video-layout">
+
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube.com/embed/P46l0u2WUV4"
+              title="Apresentação da Plataforma de Meditações O Seu Lugar"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="video-copy">
+            <span class="eyebrow">Seja bem-vinda</span>
+
+            <h2 id="titulo-video">
+              Oi, eu sou a <span class="accent">Alinne.</span>
+            </h2>
+
+            <p>
+              Talvez você tenha chegado até aqui porque está vivendo
+              exatamente o que vejo em tantas mulheres todos os dias.
+            </p>
+
+            <p>
+              Você acorda já pensando em tudo o que precisa fazer. Cuida da
+              casa, do trabalho e da família. Resolve problemas e está presente
+              para todo mundo.
+            </p>
+
+            <p>
+              Mas, quando chega a noite, o corpo deita e a cabeça continua
+              acordada.
+            </p>
+
+            <p>
+              Foi olhando para essa realidade que nasceu a Plataforma de
+              Meditações O Seu Lugar®.
+            </p>
+
+            <p>
+              Eu não criei essas meditações porque as mulheres precisavam
+              aprender a meditar. Eu as criei porque encontrei mulheres que
+              haviam desaprendido a descansar.
+            </p>
+
+            <p>
+              Hoje são <strong>mais de 50 meditações guiadas</strong>, criadas
+              para acompanhar você nos momentos em que mais precisa de
+              acolhimento, calma e presença.
+            </p>
+
+            <p>
+              Meu desejo é que, todos os dias, você tenha alguns minutos para
+              lembrar que também merece ser cuidada.
+            </p>
+
+            <p><strong>Seja muito bem-vinda.</strong></p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section aria-labelledby="titulo-dor">
+      <div class="container">
+
+        <div class="pain-card">
+          <div class="pain-grid">
+
+            <div class="pain-heading">
+              <h2 id="titulo-dor">
+                Talvez você esteja
+                <span>vivendo assim...</span>
+              </h2>
+            </div>
+
+            <div class="pain-content">
+              <ul class="pain-list">
+                <li>Você termina o dia completamente cansada.</li>
+                <li>Mas não consegue relaxar.</li>
+                <li>Deita e a mente continua trabalhando.</li>
+                <li>Sente culpa quando descansa.</li>
+                <li>Faz tudo por todo mundo.</li>
+                <li>Mas sempre deixa você para depois.</li>
+                <li>A ansiedade virou rotina.</li>
+                <li>
+                  E aquela mulher leve que existia dentro de você parece estar
+                  cada vez mais distante.
+                </li>
+              </ul>
+
+              <p class="pain-message">
+                Você se identificou? Saiba que você não está sozinha.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="solution" aria-labelledby="titulo-solucao">
+      <div class="container">
+
+        <div class="solution-panel">
+
+          <div>
+            <span class="eyebrow">Um novo caminho</span>
+
+            <h2 id="titulo-solucao">
+              Você não precisa continuar
+              <span>vivendo assim.</span>
+            </h2>
+          </div>
+
+          <ul class="solution-list">
+            <li>Desacelerar a mente</li>
+            <li>Dormir melhor</li>
+            <li>Diminuir a ansiedade</li>
+            <li>Encontrar mais leveza</li>
+            <li>Voltar para si</li>
+          </ul>
+
+        </div>
+
+      </div>
+    </section>
+
+    <section aria-labelledby="titulo-beneficios">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="eyebrow">O que você vai sentir</span>
+
+          <h2 id="titulo-beneficios">
+            Mais calma. Mais presença.
+            <span>Mais leveza.</span>
+          </h2>
+
           <p>
-            Você só precisa parar alguns minutos e se ouvir novamente.
-            As Meditações O Seu Lugar® nasceram para serem um espaço
-            de pausa, acolhimento e reconexão emocional.
+            Meditações guiadas para ajudar você a respirar melhor,
+            desacelerar os pensamentos e criar pequenos momentos de cuidado
+            dentro da sua rotina.
           </p>
         </div>
+
+        <div class="grid">
+
+          <article class="card">
+            <div class="card-number">01</div>
+            <h3>Mais calma</h3>
+            <p>
+              Uma pausa para aliviar a tensão, respirar com presença e reduzir
+              o excesso de pensamentos.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-number">02</div>
+            <h3>Mais presença</h3>
+            <p>
+              Um caminho para sair do automático e voltar a perceber seu corpo,
+              suas emoções e suas necessidades.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card-number">03</div>
+            <h3>Mais leveza</h3>
+            <p>
+              Pequenos momentos de cuidado para viver a rotina com mais
+              tranquilidade, clareza e equilíbrio.
+            </p>
+          </article>
+
+        </div>
+
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section>
-  <div class="container">
+    <section
+      class="module-section"
+      id="plataforma"
+      aria-labelledby="titulo-plataforma"
+    >
+      <div class="container">
 
-    <div class="section-title">
-      <small>O que você vai sentir</small>
-      <h2>Mais calma, presença e leveza emocional.</h2>
-      <p>
-        Meditações criadas para desacelerar pensamentos,
-        aliviar a ansiedade e trazer mais conexão com você.
-      </p>
-    </div>
+        <div class="section-heading">
+          <span class="eyebrow">Dentro da plataforma</span>
 
-    <div class="grid">
-      <div class="card">
-        <div class="card-number">01</div>
-        <h3>Respirar melhor</h3>
-        <p>Uma pausa guiada para aliviar a ansiedade e voltar ao presente.</p>
+          <h2 id="titulo-plataforma">
+            Escolha a meditação que conversa com
+            <span>o seu momento.</span>
+          </h2>
+
+          <p>
+            Conteúdos organizados por áreas da vida para você encontrar
+            acolhimento exatamente quando precisar.
+          </p>
+        </div>
+
+        <div class="grid">
+
+          <article class="card">
+            <h3>Voltar para mim</h3>
+            <ul>
+              <li>Ansiedade</li>
+              <li>Culpa</li>
+              <li>Acolhimento</li>
+              <li>Paz interior</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Cura do feminino</h3>
+            <ul>
+              <li>Sobrecarga</li>
+              <li>Limites</li>
+              <li>Posicionamento</li>
+              <li>Feminino</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Relacionamentos</h3>
+            <ul>
+              <li>Casal</li>
+              <li>Comunicação</li>
+              <li>Conexão emocional</li>
+              <li>Leveza</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Corpo e emoções</h3>
+            <ul>
+              <li>Estresse</li>
+              <li>Sono</li>
+              <li>Relaxamento</li>
+              <li>Presença</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Prosperidade</h3>
+            <ul>
+              <li>Gratidão</li>
+              <li>Merecimento</li>
+              <li>Prosperidade</li>
+              <li>Dinheiro</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Família</h3>
+            <ul>
+              <li>Crianças</li>
+              <li>Adolescentes</li>
+              <li>Proteção emocional</li>
+              <li>Dormir em paz</li>
+            </ul>
+          </article>
+
+        </div>
+
       </div>
+    </section>
 
-      <div class="card">
-        <div class="card-number">02</div>
-        <h3>Dormir melhor</h3>
-        <p>Relaxamento para preparar corpo e mente para uma noite mais tranquila.</p>
+    <section aria-labelledby="titulo-diferencial">
+      <div class="container">
+
+        <div class="difference">
+          <span class="eyebrow">Um cuidado pensado para mulheres</span>
+
+          <h2 id="titulo-diferencial">
+            Por que essas meditações
+            <span>são diferentes?</span>
+          </h2>
+
+          <p>
+            Porque elas não foram gravadas para apenas relaxar você. Cada
+            meditação nasceu da escuta de centenas de mulheres que convivem
+            diariamente com ansiedade, sobrecarga, culpa, dificuldade para
+            descansar e a sensação de terem se perdido de si mesmas.
+          </p>
+
+          <p style="margin-top: 16px;">
+            Aqui você encontra um espaço seguro para respirar, desacelerar e
+            voltar para o seu lugar.
+          </p>
+        </div>
+
       </div>
+    </section>
 
-      <div class="card">
-        <div class="card-number">03</div>
-        <h3>Voltar para si</h3>
-        <p>Reconexão com seu corpo, emoções e necessidades.</p>
+    <section
+      class="testimonial-section"
+      aria-labelledby="titulo-depoimentos"
+    >
+      <div class="container">
+
+        <div class="section-heading center">
+          <span class="eyebrow">Depoimentos</span>
+
+          <h2 id="titulo-depoimentos">
+            Mulheres reais.
+            <span>Leveza real.</span>
+          </h2>
+        </div>
+
+        <div class="testimonials">
+
+          <article class="testimonial">
+            <strong>Dirlei Patzlaf</strong>
+            <p>
+              “As meditações têm me feito olhar para dentro de mim, me conectar
+              mais com meus sentimentos e com meu corpo. Tenho me amado mais,
+              cuidado mais de mim e isso é novo pra mim.”
+            </p>
+          </article>
+
+          <article class="testimonial">
+            <strong>Ivete</strong>
+            <p>
+              “Pra mim, meditação virou rotina. É quando olho para mim, me faz
+              muito bem, tira minhas dores e me ajuda a entender melhor minha
+              vida.”
+            </p>
+          </article>
+
+          <article class="testimonial">
+            <strong>Rose</strong>
+            <p>
+              “A meditação tem me trazido para o momento presente e me ajudado
+              a entender meu corpo e meu emocional, curando tudo isso
+              internamente.”
+            </p>
+          </article>
+
+          <article class="testimonial">
+            <strong>Maribel</strong>
+            <p>
+              “Com dois momentos de meditação, já estou me olhando diferente,
+              me sentindo com mais força e vontade de vencer.”
+            </p>
+          </article>
+
+          <article class="testimonial">
+            <strong>Solange Costa</strong>
+            <p>
+              “Procuro fazer antes de dormir. Tenho um sono tranquilo, acordo
+              mais leve no dia seguinte e consigo lidar melhor com meu dia.”
+            </p>
+          </article>
+
+          <article class="testimonial">
+            <strong>Rosane Berno</strong>
+            <p>
+              “As meditações são um processo de cura, evolução e descoberta
+              diária. O sono melhorou e os desafios estão ficando mais leves de
+              resolver.”
+            </p>
+          </article>
+
+          <article class="testimonial">
+            <strong>Laís Galvagni</strong>
+            <p>
+              “Eu já havia tentado fazer meditação antes e era sempre uma
+              tortura. Com essas meditações foi diferente: me sinto muito bem,
+              durmo melhor e sinto muita leveza e paz.”
+            </p>
+          </article>
+
+          <article class="testimonial">
+            <strong>Suzi Machado</strong>
+            <p>
+              “As meditações têm sido um momento meu, às vezes com meu esposo e
+              às vezes com meus filhos. São momentos de conexão, respiração,
+              calmaria interna, relaxamento, paz e tranquilidade.”
+            </p>
+          </article>
+
+          <article class="testimonial">
+            <strong>Claudete</strong>
+            <p>
+              “Tive uma experiência muito marcante. Descobri que preciso
+              acolher minha adolescente ferida e consegui ver a mulher forte
+              que me tornei.”
+            </p>
+          </article>
+
+          <article class="testimonial">
+            <strong>Ivone</strong>
+            <p>
+              “Gratidão, Alinne. Mudou muito a minha vida e da minha família.”
+            </p>
+          </article>
+
+        </div>
+
       </div>
-    </div>
+    </section>
 
-  </div>
-</section>
+    <section aria-labelledby="titulo-como-funciona">
+      <div class="container">
 
-<section id="modulos">
-  <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Como funciona</span>
 
-    <div class="section-title">
-      <small>Dentro da plataforma</small>
-      <h2>Meditações organizadas por áreas da vida.</h2>
-      <p>Escolha o tema que mais conversa com o seu momento emocional.</p>
-    </div>
+          <h2 id="titulo-como-funciona">
+            Simples para caber
+            <span>na sua vida.</span>
+          </h2>
+        </div>
 
-    <div class="grid">
-      <div class="card">
-        <h3>Voltar para mim</h3>
-        <ul>
-          <li>Ansiedade</li>
-          <li>Culpa</li>
-          <li>Acolhimento</li>
-          <li>Paz interior</li>
-        </ul>
+        <div class="steps">
+
+          <article class="step">
+            <div class="step-number">01</div>
+            <h3>Acesse</h3>
+            <p>Acesse a plataforma de onde estiver.</p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">02</div>
+            <h3>Escolha</h3>
+            <p>
+              Escolha a meditação que mais conversa com o momento que você está
+              vivendo.
+            </p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">03</div>
+            <h3>Ouça</h3>
+            <p>Ouça no seu tempo, quantas vezes precisar.</p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">04</div>
+            <h3>Receba novidades</h3>
+            <p>Receba novas meditações todos os meses.</p>
+          </article>
+
+        </div>
+
       </div>
+    </section>
 
-      <div class="card">
-        <h3>Cura do feminino</h3>
-        <ul>
-          <li>Sobrecarga</li>
-          <li>Limites</li>
-          <li>Posicionamento</li>
-          <li>Feminino</li>
-        </ul>
+    <section id="oferta" aria-labelledby="titulo-oferta">
+      <div class="container">
+
+        <div class="offer">
+          <div class="offer-content">
+
+            <span class="eyebrow">O seu cuidado começa hoje</span>
+
+            <h2 id="titulo-oferta">
+              Você passou muito tempo cuidando de todo mundo.
+            </h2>
+
+            <p class="offer-intro">
+              Agora chegou a hora de cuidar de você.
+            </p>
+
+            <ul class="offer-benefits">
+              <li>Mais de 50 meditações guiadas</li>
+              <li>Acesso completo durante 1 ano</li>
+              <li>Novas meditações todos os meses</li>
+              <li>Acesso pelo celular, computador ou tablet</li>
+              <li>Escute quando e onde quiser</li>
+            </ul>
+
+            <p class="old-price">
+              De <del>R$ 998</del>
+            </p>
+
+            <div class="price">
+              R$ 197
+            </div>
+
+            <p class="installments">
+              ou 12x de R$ 20,37
+            </p>
+
+            <p class="offer-note">
+              Uma condição especial para que mais mulheres possam voltar a
+              cuidar de si.
+            </p>
+
+            <a
+              href="https://pay.kiwify.com.br/jFuzc6E"
+              class="btn btn-white"
+              target="_blank"
+              rel="noopener"
+            >
+              Quero começar agora
+            </a>
+
+          </div>
+        </div>
+
       </div>
+    </section>
 
-      <div class="card">
-        <h3>Relacionamentos</h3>
-        <ul>
-          <li>Casal</li>
-          <li>Comunicação</li>
-          <li>Conexão emocional</li>
-          <li>Leveza</li>
-        </ul>
+    <section aria-labelledby="titulo-faq">
+      <div class="container">
+
+        <div class="section-heading center">
+          <span class="eyebrow">Dúvidas frequentes</span>
+
+          <h2 id="titulo-faq">
+            Tudo o que você precisa saber
+            <span>antes de começar.</span>
+          </h2>
+        </div>
+
+        <div class="faq">
+
+          <article class="faq-item">
+            <button
+              class="faq-question"
+              type="button"
+              aria-expanded="false"
+            >
+              <span>Preciso saber meditar?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+
+            <div class="faq-answer" aria-hidden="true">
+              <div class="faq-answer-inner">
+                Não. As meditações são guiadas e foram criadas para você apenas
+                ouvir, respirar e acompanhar no seu tempo.
+              </div>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button
+              class="faq-question"
+              type="button"
+              aria-expanded="false"
+            >
+              <span>O acesso é por quanto tempo?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+
+            <div class="faq-answer" aria-hidden="true">
+              <div class="faq-answer-inner">
+                O acesso é anual, com a plataforma completa disponível por
+                1 ano e novas meditações todos os meses.
+              </div>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button
+              class="faq-question"
+              type="button"
+              aria-expanded="false"
+            >
+              <span>Posso ouvir pelo celular?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+
+            <div class="faq-answer" aria-hidden="true">
+              <div class="faq-answer-inner">
+                Sim. Você pode acessar online pelo celular, tablet ou
+                computador.
+              </div>
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button
+              class="faq-question"
+              type="button"
+              aria-expanded="false"
+            >
+              <span>Também serve para minha família?</span>
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+
+            <div class="faq-answer" aria-hidden="true">
+              <div class="faq-answer-inner">
+                Sim. A plataforma também conta com meditações para crianças,
+                adolescentes e homens.
+              </div>
+            </div>
+          </article>
+
+        </div>
+
       </div>
+    </section>
 
-      <div class="card">
-        <h3>Corpo e emoções</h3>
-        <ul>
-          <li>Estresse</li>
-          <li>Sono</li>
-          <li>Relaxamento</li>
-          <li>Presença</li>
-        </ul>
+    <section class="final" aria-labelledby="titulo-final">
+      <div class="container">
+
+        <h2 id="titulo-final">
+          Quando a mulher volta para si,
+          <span>a casa inteira sente.</span>
+        </h2>
+
+        <div class="final-lines">
+          <p>Porque uma mulher que encontra paz respira diferente.</p>
+          <p>Ama diferente.</p>
+          <p>Cuida diferente.</p>
+          <p>E vive com mais leveza.</p>
+        </div>
+
+        <p class="final-strong">
+          Você merece terminar o dia em paz, dormir melhor, desacelerar a mente
+          e lembrar, todos os dias, que também merece ser cuidada.
+        </p>
+
+        <p style="margin-bottom: 28px;">
+          Seja bem-vinda à Plataforma de Meditações O Seu Lugar®.
+        </p>
+
+        <a
+          href="https://pay.kiwify.com.br/jFuzc6E"
+          class="btn btn-primary"
+          target="_blank"
+          rel="noopener"
+        >
+          Quero começar minha jornada
+        </a>
+
       </div>
+    </section>
 
-      <div class="card">
-        <h3>Prosperidade</h3>
-        <ul>
-          <li>Gratidão</li>
-          <li>Merecimento</li>
-          <li>Prosperidade</li>
-          <li>Dinheiro</li>
-        </ul>
-      </div>
+  </main>
 
-      <div class="card">
-        <h3>Família</h3>
-        <ul>
-          <li>Crianças</li>
-          <li>Adolescentes</li>
-          <li>Proteção emocional</li>
-          <li>Dormir em paz</li>
-        </ul>
-      </div>
-    </div>
+  <footer>
+    © Meditações O Seu Lugar® — Todos os direitos reservados.
+  </footer>
 
-  </div>
-</section>
+  <script>
+    (function () {
+      const faqItems = document.querySelectorAll(".faq-item");
 
-<section>
-  <div class="container">
+      faqItems.forEach((item) => {
+        const button = item.querySelector(".faq-question");
+        const answer = item.querySelector(".faq-answer");
 
-    <div class="section-title">
-      <small>Depoimentos</small>
-      <h2>Mulheres reais. Leveza real.</h2>
-    </div>
+        button.addEventListener("click", () => {
+          const isOpen = item.classList.contains("open");
 
-           <div class="testimonial">
-        <strong>Dirlei Patzlaf</strong>
-        <p>“As meditações têm me feito olhar para dentro de mim, me conectar mais com meus sentimentos e com meu corpo. Tenho me amado mais, cuidado mais de mim e isso é novo pra mim.”</p>
-      </div>
+          faqItems.forEach((currentItem) => {
+            currentItem.classList.remove("open");
 
-      <div class="testimonial">
-        <strong>Ivete</strong>
-        <p>“Pra mim, meditação virou rotina. É quando olho para mim, me faz muito bem, tira minhas dores e me ajuda a entender melhor minha vida.”</p>
-      </div>
+            const currentButton =
+              currentItem.querySelector(".faq-question");
 
-      <div class="testimonial">
-        <strong>Rose</strong>
-        <p>“A meditação tem me trazido para o momento presente e me ajudado a entender meu corpo e meu emocional, curando tudo isso internamente.”</p>
-      </div>
+            const currentAnswer =
+              currentItem.querySelector(".faq-answer");
 
-      <div class="testimonial">
-        <strong>Maribel</strong>
-        <p>“Com dois momentos de meditação, já estou me olhando diferente, me sentindo com mais força e vontade de vencer.”</p>
-      </div>
+            currentButton.setAttribute("aria-expanded", "false");
+            currentAnswer.setAttribute("aria-hidden", "true");
+            currentAnswer.style.maxHeight = null;
+          });
 
-      <div class="testimonial">
-        <strong>Solange Costa</strong>
-        <p>“Procuro fazer antes de dormir. Tenho um sono tranquilo, acordo mais leve no dia seguinte e consigo lidar melhor com meu dia.”</p>
-      </div>
-
-      <div class="testimonial">
-        <strong>Rosane Berno</strong>
-        <p>“As meditações são um processo de cura, evolução e descoberta diária. O sono melhorou e os desafios estão ficando mais leves de resolver.”</p>
-      </div>
-
-      <div class="testimonial">
-        <strong>Laís Galvagni</strong>
-        <p>“Eu já havia tentado fazer meditação antes e era sempre uma tortura. Com essas meditações foi diferente: me sinto muito bem, durmo melhor e sinto muita leveza e paz.”</p>
-      </div>
-
-      <div class="testimonial">
-        <strong>Suzi Machado</strong>
-        <p>“As meditações têm sido um momento meu, às vezes com meu esposo e às vezes com meus filhos. São momentos de conexão, respiração, calmaria interna, relaxamento, paz e tranquilidade.”</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-    </div>
-
-  </div>
-</section>
-
-<section>
-  <div class="container">
-
-    <div class="section-title">
-      <small>Como funciona</small>
-      <h2>Simples para caber na sua vida real.</h2>
-    </div>
-
-    <div class="steps">
-      <div class="step"><div class="step-number">01</div><h3>Acesso online</h3><p>Entre na plataforma de qualquer lugar.</p></div>
-      <div class="step"><div class="step-number">02</div><h3>Escolha o tema</h3><p>Escute conforme sua necessidade emocional.</p></div>
-      <div class="step"><div class="step-number">03</div><h3>No seu tempo</h3><p>Ouça quando quiser e quantas vezes precisar.</p></div>
-      <div class="step"><div class="step-number">04</div><h3>Novidades</h3><p>Novas meditações adicionadas à plataforma todo mês.</p></div>
-    </div>
-
-  </div>
-</section>
-
-<section>
-  <div class="container">
-    <div class="offer">
-
-      <small>Acesso anual completo</small>
-
-      <h2>Comece sua jornada de volta para si.</h2>
-
-      <p>
-        Um espaço de acolhimento, calma e reconexão emocional
-        para você viver com mais leveza.
-      </p>
-
-      <div class="price">R$ 440</div>
-
-      <p>Plataforma completa de meditações gravadas por 1 ano.</p>
-
-      <br><br>
-
-      <a href="https://kiwify.app/R2JTv5s" class="btn btn-primary">Quero acessar agora</a>
-
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="container">
-
-    <div class="section-title">
-      <small>Perguntas frequentes</small>
-      <h2>Dúvidas comuns antes de começar.</h2>
-    </div>
-
-    <div class="faq">
-      <div class="faq-item"><h3>Preciso saber meditar?</h3><p>Não. As meditações são guiadas e foram criadas para você apenas ouvir, respirar e acompanhar no seu tempo.</p></div>
-      <div class="faq-item"><h3>O acesso é por quanto tempo?</h3><p>O acesso é anual, com a plataforma completa disponível por 1 ano, com meditações novas todo mês.</p></div>
-      <div class="faq-item"><h3>Posso ouvir pelo celular?</h3><p>Sim. Você pode acessar online pelo celular, tablet ou computador.</p></div>
-      <div class="faq-item"><h3>Também serve para minha família?</h3><p>Sim. A plataforma também conta com meditações para crianças, adolescentes e homens.</p></div>
-    </div>
-
-  </div>
-</section>
-
-<section class="final">
-  <div class="container">
-    <h2>Quando a mulher começa a se cuidar, <span>a casa inteira sente.</span></h2>
-
-    <p>
-      Tudo que você precisa agora é apenas alguns minutos para respirar,
-      desacelerar e voltar para si.
-    </p>
-
-    <a href="https://kiwify.app/R2JTv5s" class="btn btn-primary">Quero acessar as meditações</a>
-  </div>
-</section>
-
-<footer>
-  © Meditações O Seu Lugar® — Todos os direitos reservados.
-</footer>
+          if (!isOpen) {
+            item.classList.add("open");
+            button.setAttribute("aria-expanded", "true");
+            answer.setAttribute("aria-hidden", "false");
+            answer.style.maxHeight = answer.scrollHeight + "px";
+          }
+        });
+      });
+    })();
+  </script>
 
 </body>
 </html>
